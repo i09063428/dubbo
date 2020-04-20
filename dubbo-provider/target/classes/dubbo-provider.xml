@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:dobbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+        <!-- 定义应用的名称-->
+    <dubbo:application name="dobbp-provider"/>
+    <!-- 定义协议端口 -->
+    <dubbo:protocol port="28800"/>
+    <!-- 定义注册中心-->
+    <dobbo:registry protocol="zookeeper" address="192.168.170.128:2181"/>
+    <!-- 定义服务的提供者-->
+    <bean id="userService" class="com.zxl.service.impl.UserServiceImpl"/>
+    <dubbo:service interface="com.zxl.service.IUserService" ref="userService"/>
+</beans>
